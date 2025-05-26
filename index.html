@@ -873,11 +873,15 @@
         }
 
         // Initialize i18next
+        console.log("Attempting to fetch translations and initialize i18next.");
+        const preferredLanguage = localStorage.getItem('preferred_language') || 'en';
+        console.log("Preferred language from localStorage:", preferredLanguage);
+
         fetchTranslations('translate.json').then(translations => {
             console.log("Fetched translations:", translations);
             i18next.init({
                 resources: translations,
-                lng: localStorage.getItem('preferred_language') || 'en', // Load preferred language or default to English
+                lng: preferredLanguage, // Use the preferred language
                 fallbackLng: 'en',
                 interpolation: {
                     escapeValue: false // react already safes from xss
@@ -887,6 +891,14 @@
                     console.error("Error initializing i18next:", err);
                 } else {
                     console.log("i18next initialized successfully.");
+                }
+                // Set the language switcher value after i18next is initialized
+                const languageSelect = document.getElementById('language-select');
+                if (languageSelect) {
+                    console.log("Language select element found. Setting value to:", i18next.language);
+                    languageSelect.value = i18next.language;
+                } else {
+                    console.log("Language select element not found.");
                 }
                 // Initialize translation on load
                 updateContentLanguage();
@@ -898,6 +910,12 @@
         // Function to update content language
         function updateContentLanguage() {
             console.log("Updating content language...");
+            if (!i18next.isInitialized()) {
+                console.log("i18next not initialized yet, delaying translation update.");
+                // Optionally, add a small delay and retry
+                setTimeout(updateContentLanguage, 100);
+                return;
+            }
             document.querySelectorAll('[data-translate]').forEach(element => {
                 const key = element.dataset.translate;
                 const translatedText = i18next.t(key);
