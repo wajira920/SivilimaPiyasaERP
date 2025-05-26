@@ -874,6 +874,7 @@
 
         // Initialize i18next
         fetchTranslations('translate.json').then(translations => {
+            console.log("Fetched translations:", translations);
             i18next.init({
                 resources: translations,
                 lng: localStorage.getItem('preferred_language') || 'en', // Load preferred language or default to English
@@ -882,6 +883,11 @@
                     escapeValue: false // react already safes from xss
                 }
             }, function(err, t) {
+                if (err) {
+                    console.error("Error initializing i18next:", err);
+                } else {
+                    console.log("i18next initialized successfully.");
+                }
                 // Initialize translation on load
                 updateContentLanguage();
                 // Load the initial page content after translations are loaded
