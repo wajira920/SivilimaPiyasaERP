@@ -4,90 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enhanced ERP App - Modern UI Wireframes</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/i18next@23.2.11/dist/umd/i18next.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        * {
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', 'Noto Sans Sinhala', sans-serif;
+            background: #f8fafc;
+            min-height: 100vh;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 16px;
-        }
-        
-        .card-shadow {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .modern-card {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
-        }
-        
-        .modern-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
+
         .gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        
-        .gradient-card {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-        }
-        
-        .sidebar-gradient {
-            background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
-        }
-        
-        .nav-item {
-            padding: 12px 16px;
-            margin: 6px 12px;
-            border-radius: 12px;
-            cursor: pointer;
+
+        .card-hover {
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            color: #9CA3AF;
-            font-weight: 500;
         }
-        
-        .nav-item i {
-            width: 20px;
-            margin-right: 12px;
-            font-size: 16px;
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        
-        .nav-item:hover {
-            background: rgba(99, 102, 241, 0.1);
-            color: #6366f1;
-            transform: translateX(4px);
+
+        .employee-card { /* Reusing this for general cards */
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
-        
-        .nav-item.active {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            color: white;
-            box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.39);
-        }
-        
+
         .btn-primary {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 12px 24px;
             border: none;
@@ -95,47 +49,47 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.39);
+            box-shadow: 0 4px 14px 0 rgba(102, 126, 234, 0.39);
         }
-        
+
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px 0 rgba(99, 102, 241, 0.5);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
-        
+
         .btn-secondary {
-            background: #f1f5f9;
+            background: #e2e8f0;
             color: #475569;
-            padding: 8px 16px;
+            padding: 10px 20px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             font-weight: 500;
             transition: all 0.3s ease;
         }
-        
+
         .btn-secondary:hover {
-            background: #e2e8f0;
+            background: #cbd5e1;
             transform: translateY(-1px);
         }
-        
+
         .form-input {
             width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
             margin: 8px 0;
             font-size: 14px;
             transition: all 0.3s ease;
             background: white;
         }
-        
+
         .form-input:focus {
             outline: none;
-            border-color: #6366f1;
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
-        
+
         .modern-table {
             width: 100%;
             border-collapse: separate;
@@ -145,28 +99,29 @@
             overflow: hidden;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
-        
+
         .modern-table th {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            padding: 16px;
+            background: #f1f5f9;
+            padding: 14px 16px;
             text-align: left;
-            font-weight: 700;
+            font-weight: 600;
             color: #334155;
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        
+
         .modern-table td {
-            padding: 16px;
+            padding: 14px 16px;
             border-top: 1px solid #f1f5f9;
             color: #475569;
+            font-size: 14px;
         }
-        
+
         .modern-table tr:hover {
             background: #f8fafc;
         }
-        
+
         .status-badge {
             padding: 6px 12px;
             border-radius: 20px;
@@ -175,155 +130,166 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        
+
         .status-available {
             background: #dcfce7;
             color: #166534;
         }
-        
+
         .status-low {
             background: #fef3c7;
             color: #a16207;
         }
-        
+
         .status-ordered {
             background: #dbeafe;
             color: #1e40af;
         }
-        
+
         .status-draft {
             background: #f3f4f6;
             color: #374151;
         }
-        
+
         .status-sent {
             background: #e0f2fe;
             color: #075985;
         }
-        
+
         .status-accepted {
             background: #d1fae5;
             color: #065f46;
         }
-        
+
         .metric-card {
             background: white;
-            border-radius: 20px;
-            padding: 24px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid #f1f5f9;
-        }
-        
-        .metric-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .metric-icon {
-            width: 60px;
-            height: 60px;
             border-radius: 16px;
+            padding: 20px;
+            text-align: left;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .metric-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 16px;
-            font-size: 24px;
+            margin: 0;
+            font-size: 20px;
             color: white;
         }
-        
+
         .header-modern {
             background: white;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #e2e8f0;
             padding: 16px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #f1f5f9;
+            box-shadow: none;
         }
-        
+
         .logo-modern {
             display: flex;
             align-items: center;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
-            color: #6366f1;
+            color: #334155;
         }
-        
+
         .logo-modern i {
-            margin-right: 12px;
-            font-size: 28px;
+            margin-right: 8px;
+            font-size: 24px;
+            color: #667eea;
         }
-        
+
         .offline-banner {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            background: #fef3c7;
             border: none;
             color: #a16207;
-            padding: 12px 24px;
+            padding: 10px 20px;
             text-align: center;
             font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 14px;
         }
-        
+
         .offline-banner i {
-            margin-right: 8px;
+            margin-right: 6px;
         }
-        
+
         .page {
             display: none;
             min-height: 100vh;
             background: #f8fafc;
         }
-        
+
         .page.active {
             display: flex;
             flex-direction: column;
         }
-        
+
         .main-layout {
             display: flex;
             flex: 1;
         }
-        
+
         .sidebar-modern {
-            width: 280px;
-            background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
-            padding: 24px 0;
-            box-shadow: 4px 0 6px -1px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 24px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease-in-out;
+            z-index: 50; /* Ensure sidebar is above content */
         }
-        
+
+        .sidebar-modern .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #e2e8f0;
+        }
+
+        .sidebar-modern .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .sidebar-modern .nav-item.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: 600;
+        }
+
+        .nav-item i {
+            width: 20px;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
         .content-modern {
             flex: 1;
             padding: 32px;
-            padding-bottom: 100px; /* Increased padding to account for fixed navigation */
             background: #f8fafc;
+            overflow-y: auto; /* Enable scrolling for content */
         }
-        
-        .navigation {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-        }
-        
-        .nav-buttons {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            background: white;
-            padding: 16px;
-            border-radius: 20px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nav-buttons button {
-            padding: 8px 16px;
-            font-size: 12px;
-            border-radius: 8px;
-        }
-        
+
         .chart-modern {
             background: white;
             border-radius: 16px;
@@ -338,36 +304,28 @@
             text-align: center;
             transition: all 0.3s ease;
         }
-        
+
         .chart-modern:hover {
-            border-color: #6366f1;
-            color: #6366f1;
+            border-color: #667eea;
+            color: #667eea;
         }
-        
+
         .sync-card {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            border: 1px solid #93c5fd;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 16px;
             padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
-        
+
         .page-title {
-            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-            color: white;
-            padding: 20px 32px;
-            font-size: 20px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
+            display: none;
         }
-        
-        .page-title i {
-            margin-right: 12px;
-        }
-        
+
         .login-container {
             min-height: 100vh;
             display: flex;
@@ -376,29 +334,30 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 20px;
         }
-        
+
         .login-card {
             background: white;
-            border-radius: 24px;
-            padding: 40px;
+            border-radius: 16px;
+            padding: 32px;
             width: 100%;
             max-width: 400px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
-        
+
         .user-avatar {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: 600;
-            margin-right: 12px;
+            margin-right: 10px;
+            font-size: 14px;
         }
-        
+
         .notification-dot {
             position: absolute;
             top: -2px;
@@ -408,36 +367,36 @@
             background: #ef4444;
             border-radius: 50%;
         }
-        
+
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
-        
+
         .pulse {
             animation: pulse 2s infinite;
         }
-        
+
         .grid-modern {
             display: grid;
             gap: 24px;
         }
-        
+
         .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
         .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
         .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
         .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
-        
+
         @media (min-width: 768px) {
             .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
             .md\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
         }
-        
+
         @media (min-width: 1024px) {
             .lg\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
             .lg\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
         }
-        
+
         /* Modal Styles */
         .modal {
             display: none;
@@ -450,12 +409,13 @@
             z-index: 1000;
             align-items: center;
             justify-content: center;
+            overflow-y: auto; /* Enable scrolling for modal content */
         }
-        
+
         .modal.active {
             display: flex;
         }
-        
+
         .modal-content {
             background: white;
             border-radius: 16px;
@@ -464,8 +424,9 @@
             max-width: 500px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             position: relative;
+            margin: 20px; /* Add some margin for smaller screens */
         }
-        
+
         .modal-close {
             position: absolute;
             top: 16px;
@@ -474,7 +435,7 @@
             color: #475569;
             cursor: pointer;
         }
-        
+
         /* Mobile Responsive */
         .hamburger {
             display: none;
@@ -482,281 +443,542 @@
             cursor: pointer;
             color: #475569;
         }
-        
-        @media (max-width: 640px) {
+
+        @media (max-width: 767px) {
             .sidebar-modern {
-                display: none;
                 position: fixed;
                 top: 0;
                 left: 0;
                 height: 100%;
                 z-index: 999;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
             }
-            
+
             .sidebar-modern.active {
-                display: block;
+                transform: translateX(0%);
             }
-            
+
             .hamburger {
                 display: block;
             }
-            
+
             .content-modern {
                 padding: 16px;
             }
-            
+
             .modern-table {
                 overflow-x: auto;
             }
-            
+
             .btn-primary, .btn-secondary {
                 padding: 10px 16px;
                 font-size: 14px;
             }
-            
+
             .grid-modern {
                 grid-template-columns: 1fr;
             }
-            
+
             .sync-status-container {
                 position: fixed;
-                bottom: 70px;
+                bottom: 20px;
                 right: 16px;
                 left: 16px;
                 width: auto;
                 max-width: none;
             }
-            
+
             .sync-card {
                 padding: 12px 16px;
             }
-            
+
             .activity-item {
                 flex-wrap: wrap;
             }
-            
+
             .activity-item > div:last-child {
                 margin-top: 8px;
                 width: 100%;
             }
         }
+
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+
+        .language-switcher select {
+            appearance: none;
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 8px 28px 8px 12px;
+            color: #475569;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px;
+        }
+
+        .language-switcher::after {
+            content: '⌄';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #475569;
+        }
+
+        .sinhala {
+            font-family: 'Noto Sans Sinhala', sans-serif;
+        }
+
+        .welcome-message {
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation Controls -->
-    <div class="navigation">
-        <div class="nav-buttons">
-            <button id="nav-login" class="btn-primary">
-                <i class="fas fa-sign-in-alt"></i> Login
-            </button>
-            <button id="nav-dashboard" class="btn-primary">
-                <i class="fas fa-tachometer-alt"></i> Dashboard
-            </button>
-            <button id="nav-stock" class="btn-primary">
-                <i class="fas fa-boxes"></i> Stock
-            </button>
-            <button id="nav-invoices" class="btn-primary">
-                <i class="fas fa-file-invoice"></i> Invoices
-            </button>
-            <button id="nav-quotations" class="btn-primary">
-                <i class="fas fa-quote-right"></i> Quotations
-            </button>
-            <button id="nav-insights" class="btn-primary">
-                <i class="fas fa-chart-line"></i> Insights
-            </button>
-            <button id="nav-users" class="btn-primary">
-                <i class="fas fa-users"></i> Users
-            </button>
-            <button id="nav-config" class="btn-primary">
-                <i class="fas fa-cog"></i> Config
-            </button>
-            <button id="nav-backup" class="btn-primary">
-                <i class="fas fa-database"></i> Backup
-            </button>
-        </div>
-    </div>
 
-    <!-- 1. LOGIN PAGE -->
-    <div id="login" class="page active">
-        <div class="page-title">
-            <i class="fas fa-sign-in-alt"></i>
-            1. LOGIN PAGE - Modern Authentication
-        </div>
-        <div class="login-container">
-            <div class="login-card">
-                <!-- Language Switcher -->
-                <div class="flex justify-end mb-6">
-                    <select class="form-input w-32">
-                        <option>🇺🇸 English</option>
-                        <option>🇪🇸 Español</option>
-                    </select>
-                </div>
-                
-                <!-- Logo -->
-                <div class="text-center mb-8">
-                    <div class="logo-modern justify-center">
-                        <i class="fas fa-cube"></i>
-                        <span>ERP Pro</span>
-                    </div>
-                    <p class="text-gray-600 mt-2">Enterprise Resource Planning</p>
-                </div>
-                
-                <!-- Login Form -->
-                <div class="space-y-6">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                        <input type="email" placeholder="Enter your email" class="form-input">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                        <input type="password" placeholder="Enter your password" class="form-input">
-                    </div>
-                    <button class="btn-primary w-full">
-                        <i class="fas fa-sign-in-alt mr-2"></i>
-                        Sign In
-                    </button>
-                    <div class="text-center">
-                        <a href="#" class="text-indigo-600 text-sm hover:text-indigo-800">Forgot Password?</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Main Application Container -->
+    <div id="app" class="flex min-h-screen bg-gray-50">
 
-    <!-- 2. DASHBOARD PAGE -->
-    <div id="dashboard" class="page">
-        <div class="page-title">
-            <i class="fas fa-tachometer-alt"></i>
-            2. DASHBOARD - Business Overview
-        </div>
-        
-        <!-- Offline Banner -->
-        <div class="offline-banner">
-            <i class="fas fa-wifi pulse"></i>
-            OFFLINE MODE - Some features may be limited
-        </div>
-        
-        <!-- Header -->
-        <div class="header-modern">
-            <div class="flex items-center">
-                <div class="hamburger mr-4">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <div class="logo-modern">
+        <!-- Mobile Overlay for Sidebar -->
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"></div>
+
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar-modern fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0">
+            <div class="mb-8 flex items-center justify-between md:justify-start">
+                <div class="logo-modern text-white">
                     <i class="fas fa-cube"></i>
                     <span>ERP Pro</span>
                 </div>
-                <div class="user-avatar ml-8">
-                    <i class="fas fa-user"></i>
-                </div>
-                <span class="font-semibold text-gray-700">Welcome, Super Admin</span>
+                <button id="close-sidebar" class="text-white text-3xl focus:outline-none md:hidden">&times;</button>
             </div>
-            <div class="flex items-center space-x-4">
-                <select class="form-input w-24">
-                    <option>EN</option>
-                    <option>ES</option>
-                </select>
-                <button class="btn-secondary">
-                    <i class="fas fa-sign-out-alt mr-2"></i>
-                    Logout
-                </button>
+
+            <nav class="space-y-2">
+                <div class="nav-item" data-page="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span data-translate="dashboardMenu">Dashboard</span>
+                </div>
+                <div class="nav-item" data-page="stock">
+                    <i class="fas fa-boxes"></i>
+                    <span data-translate="stockManagement">Stock Management</span>
+                </div>
+                <div class="nav-item" data-page="invoices">
+                    <i class="fas fa-file-invoice"></i>
+                    <span data-translate="invoices">Invoices</span>
+                </div>
+                <div class="nav-item" data-page="quotations">
+                    <i class="fas fa-quote-right"></i>
+                    <span data-translate="quotations">Quotations</span>
+                </div>
+                <div class="nav-item" data-page="insights">
+                    <i class="fas fa-chart-line"></i>
+                    <span data-translate="businessInsights">Business Insights</span>
+                </div>
+                <div class="nav-item" data-page="users">
+                    <i class="fas fa-users"></i>
+                    <span data-translate="userManagement">User Management</span>
+                </div>
+                <div class="nav-item" data-page="config">
+                    <i class="fas fa-cog"></i>
+                    <span data-translate="systemConfig">System Config</span>
+                </div>
+                <div class="nav-item" data-page="backup">
+                    <i class="fas fa-database"></i>
+                    <span data-translate="backupRestore">Backup/Restore</span>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 flex flex-col">
+            <!-- Header -->
+            <div class="header-modern">
+                <div class="flex items-center">
+                    <div id="open-sidebar" class="hamburger mr-4 md:hidden">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <h1 id="page-header-title" class="text-lg sm:text-xl font-semibold text-gray-800"></h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="language-switcher">
+                        <select id="language-select" class="form-input w-24" aria-label="Select Language">
+                            <option value="en">EN</option>
+                            <option value="si">SI</option>
+                        </select>
+                    </div>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span class="font-semibold text-gray-700 hidden sm:block" data-translate="welcomeAdmin">Welcome, Super Admin</span>
+                    <button class="btn-secondary hidden sm:block">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        <span data-translate="logout">Logout</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Offline Banner -->
+            <div id="offline-banner" class="offline-banner hidden">
+                <i class="fas fa-wifi pulse"></i>
+                <span data-translate="offlineMode">OFFLINE MODE - Some features may be limited</span>
+            </div>
+
+            <!-- Page Content -->
+            <div id="page-content" class="content-modern flex-1">
+                <!-- Content will be loaded here based on navigation -->
+            </div>
+
+            <!-- Footer -->
+            <div class="text-center py-4 text-gray-600 bg-white border-t">
+                <span data-translate="erpAppVersion">ERP App v1.0 | Contact Support:</span> <a href="mailto:support@erp.com" class="text-indigo-600" data-translate="contactEmail">support@erp.com</a>
             </div>
         </div>
-        
-        <div class="main-layout">
-            <!-- Sidebar -->
-            <div class="sidebar-modern">
-                <div class="nav-item active">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
+    </div>
+
+    <!-- Modals -->
+    <!-- Add/Edit Stock Modal -->
+    <div id="add-stock-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="close-stock-modal">&times;</span>
+            <h3 class="text-2xl font-bold text-gray-900 mb-6" data-translate="addEditStockItem">Add/Edit Stock Item</h3>
+
+            <form class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="itemNameRequired">Item Name <span class="text-red-500">*</span></label>
+                    <input type="text" class="form-input" placeholder="Enter item name">
                 </div>
-                <div class="nav-item">
-                    <i class="fas fa-boxes"></i>
-                    <span>Stock Management</span>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="currentQuantityRequired">Current Quantity <span class="text-red-500">*</span></label>
+                        <input type="number" class="form-input" placeholder="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="minimumThresholdRequired">Minimum Threshold <span class="text-red-500">*</span></label>
+                        <input type="number" class="form-input" placeholder="10">
+                    </div>
                 </div>
-                <div class="nav-item">
-                    <i class="fas fa-file-invoice"></i>
-                    <span>Invoices</span>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="status">Status</label>
+                    <select class="form-input">
+                        <option data-translate="available">Available</option>
+                        <option data-translate="ordered">Ordered</option>
+                        <option data-translate="outOfStock">Out of Stock</option>
+                    </select>
                 </div>
-                <div class="nav-item">
-                    <i class="fas fa-quote-right"></i>
-                    <span>Quotations</span>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="unitPrice">Unit Price ($)</label>
+                    <input type="number" step="0.01" class="form-input" placeholder="0.00">
                 </div>
-                <div class="nav-item">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Business Insights</span>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="description">Description</label>
+                    <textarea class="form-input" rows="3" placeholder="Optional description..." data-translate-placeholder="optionalDescription"></textarea>
                 </div>
-                <div class="nav-item">
-                    <i class="fas fa-users"></i>
-                    <span>User Management</span>
+
+                <div class="flex justify-end space-x-4 pt-4">
+                    <button type="button" id="cancel-stock-modal" class="btn-secondary" data-translate="cancel">Cancel</button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-save mr-2"></i>
+                        <span data-translate="saveItem">Save Item</span>
+                    </button>
                 </div>
-                <div class="nav-item">
-                    <i class="fas fa-cog"></i>
-                    <span>System Config</span>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add/Edit Invoice Modal -->
+    <div id="add-invoice-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="close-invoice-modal">&times;</span>
+            <h3 class="text-2xl font-bold text-gray-900 mb-6" data-translate="createEditInvoice">Create/Edit Invoice</h3>
+
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="invoiceIdLabel">Invoice ID</label>
+                        <input type="text" class="form-input" value="INV-003" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="date">Date</label>
+                        <input type="date" class="form-input" value="2025-05-24">
+                    </div>
                 </div>
-                <div class="nav-item">
-                    <i class="fas fa-database"></i>
-                    <span>Backup/Restore</span>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="customerNameRequired">Customer Name <span class="text-red-500">*</span></label>
+                    <input type="text" class="form-input" placeholder="Enter customer name">
                 </div>
-            </div>
-            
-            <!-- Main Content -->
-            <div class="content-modern">
-                <h2 class="text-3xl font-bold text-gray-900 mb-8">Dashboard Overview</h2>
-                
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="customerEmail">Customer Email</label>
+                    <input type="email" class="form-input" placeholder="customer@email.com">
+                </div>
+
+                <!-- Invoice Items -->
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <label class="block text-sm font-medium text-gray-700" data-translate="invoiceItems">Invoice Items</label>
+                        <button type="button" class="btn-secondary" id="add-invoice-item-btn">
+                            <i class="fas fa-plus mr-2"></i>
+                            <span data-translate="addItem">Add Item</span>
+                        </button>
+                    </div>
+
+                    <div id="invoiceItems" class="space-y-4">
+                        <div class="grid grid-cols-12 gap-4 items-center">
+                            <div class="col-span-4">
+                                <select class="form-input text-sm">
+                                    <option data-translate="selectItem">Select Item</option>
+                                    <option>Widget A ($15.00)</option>
+                                    <option>Product B ($25.50)</option>
+                                    <option>Item C ($8.75)</option>
+                                </select>
+                            </div>
+                            <div class="col-span-2">
+                                <input type="number" class="form-input text-sm" placeholder="Qty" value="1" data-translate-placeholder="qty">
+                            </div>
+                            <div class="col-span-2">
+                                <input type="number" class="form-input text-sm" placeholder="Price" value="15.00" data-translate-placeholder="price">
+                            </div>
+                            <div class="col-span-2">
+                                <input type="text" class="form-input text-sm" placeholder="Total" value="$15.00" readonly data-translate-placeholder="total">
+                            </div>
+                            <div class="col-span-2">
+                                <button type="button" class="btn-secondary text-sm remove-invoice-item-btn">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Invoice Totals -->
+                <div class="border-t border-gray-200 pt-6 mt-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div></div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between text-gray-700">
+                                <span data-translate="subtotal">Subtotal:</span>
+                                <span class="font-medium">$15.00</span>
+                            </div>
+                            <div class="flex justify-between text-gray-700">
+                                <span data-translate="tax">Tax (10%):</span>
+                                <span class="font-medium">$1.50</span>
+                            </div>
+                            <div class="flex justify-between font-bold text-xl text-gray-900">
+                                <span data-translate="total">Total:</span>
+                                <span>$16.50</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="notes">Notes</label>
+                    <textarea class="form-input" rows="2" placeholder="Additional notes..." data-translate-placeholder="additionalNotes"></textarea>
+                </div>
+
+                <div class="flex justify-end space-x-4 pt-4">
+                    <button type="button" id="cancel-invoice-modal" class="btn-secondary" data-translate="cancel">Cancel</button>
+                    <button type="submit" class="btn-secondary">
+                        <i class="fas fa-save mr-2"></i>
+                        <span data-translate="saveAsDraft">Save as Draft</span>
+                    </button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-file-invoice-dollar mr-2"></i>
+                        <span data-translate="createInvoiceButton">Create Invoice</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add/Edit User Modal -->
+    <div id="add-user-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="close-user-modal">&times;</span>
+            <h3 class="text-2xl font-bold text-gray-900 mb-6" data-translate="addEditUser">Add/Edit User</h3>
+
+            <form class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="fullNameRequired">Full Name <span class="text-red-500">*</span></label>
+                    <input type="text" class="form-input" placeholder="Enter full name">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="emailAddressRequired">Email Address <span class="text-red-500">*</span></label>
+                    <input type="email" class="form-input" placeholder="user@business.com">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="passwordRequired">Password <span class="text-red-500">*</span></label>
+                    <input type="password" class="form-input" placeholder="Enter password">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="userRoleRequired">User Role <span class="text-red-500">*</span></label>
+                    <select class="form-input">
+                        <option data-translate="user">User</option>
+                        <option data-translate="admin">Admin</option>
+                        <option data-translate="superAdmin">Super Admin</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="status">Status</label>
+                    <select class="form-input">
+                        <option data-translate="active">Active</option>
+                        <option data-translate="inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <div class="flex justify-end space-x-4 pt-4">
+                    <button type="button" id="cancel-user-modal" class="btn-secondary" data-translate="cancel">Cancel</button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-save mr-2"></i>
+                        <span data-translate="saveUser">Save User</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Function to fetch translations from JSON file
+        async function fetchTranslations(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error("Error fetching translations:", error);
+                return {}; // Return empty object on error
+            }
+        }
+
+        // Initialize i18next
+        fetchTranslations('translate.json').then(translations => {
+            i18next.init({
+                resources: translations,
+                lng: localStorage.getItem('preferred_language') || 'en', // Load preferred language or default to English
+                fallbackLng: 'en',
+                interpolation: {
+                    escapeValue: false // react already safes from xss
+                }
+            }, function(err, t) {
+                // Initialize translation on load
+                updateContentLanguage();
+            });
+        });
+
+        // Function to update content language
+        function updateContentLanguage() {
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.dataset.translate;
+                element.textContent = i18next.t(key);
+            });
+            document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
+                 const key = element.dataset.translatePlaceholder;
+                 element.placeholder = i18next.t(key);
+            });
+
+            // Update html lang attribute
+            document.documentElement.lang = i18next.language;
+
+            // Add appropriate font class
+            document.body.classList.remove('sinhala', 'english');
+            document.body.classList.add(i18next.language === 'si' ? 'sinhala' : 'english');
+        }
+
+        // Language switcher event listener
+        const languageSelect = document.getElementById('language-select');
+        if (languageSelect) {
+            // Set initial value
+            languageSelect.value = i18next.language;
+            languageSelect.addEventListener('change', function(e) {
+                i18next.changeLanguage(e.target.value, (err, t) => {
+                    if (err) return console.log('something went wrong loading', err);
+                    updateContentLanguage();
+                    // Store language preference
+                    localStorage.setItem('preferred_language', i18next.language);
+                });
+            });
+        }
+
+        // Page content mapping
+        const pageContent = {
+            dashboard: `
+                <h2 class="text-3xl font-bold text-gray-900 mb-8" data-translate="dashboard.title">Dashboard Overview</h2>
+
                 <!-- Dashboard Metrics -->
                 <div class="grid-modern grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-8">
-                    <div class="metric-card">
+                    <div class="metric-card card-hover">
                         <div class="metric-icon" style="background: linear-gradient(135deg, #10b981 0%, #065f46 100%);">
                             <i class="fas fa-boxes"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-900">245</h3>
-                        <p class="text-gray-600 font-medium">Available Stock</p>
+                        <p class="text-gray-600 font-medium" data-translate="dashboard.availableStock">Available Stock</p>
                         <div class="mt-2 text-sm text-green-600">
                             <i class="fas fa-arrow-up"></i> +12% from last month
                         </div>
                     </div>
-                    
-                    <div class="metric-card">
+
+                    <div class="metric-card card-hover">
                         <div class="metric-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #92400e 100%);">
                             <i class="fas fa-exclamation-triangle"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-900">12</h3>
-                        <p class="text-gray-600 font-medium">Low Stock Alerts</p>
+                        <p class="text-gray-600 font-medium" data-translate="dashboard.lowStockAlerts">Low Stock Alerts</p>
                         <div class="mt-2 text-sm text-yellow-600">
                             <i class="fas fa-arrow-down"></i> -3 from yesterday
                         </div>
                     </div>
-                    
-                    <div class="metric-card">
+
+                    <div class="metric-card card-hover">
                         <div class="metric-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);">
                             <i class="fas fa-shopping-cart"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-900">8</h3>
-                        <p class="text-gray-600 font-medium">Pending Orders</p>
+                        <p class="text-gray-600 font-medium" data-translate="dashboard.pendingOrders">Pending Orders</p>
                         <div class="mt-2 text-sm text-blue-600">
                             <i class="fas fa-clock"></i> 2 urgent
                         </div>
                     </div>
-                    
-                    <div class="metric-card">
+
+                    <div class="metric-card card-hover">
                         <div class="metric-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #6b21a8 100%);">
                             <i class="fas fa-dollar-sign"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-900">$1,250</h3>
-                        <p class="text-gray-600 font-medium">Daily Sales</p>
+                        <p class="text-gray-600 font-medium" data-translate="dashboard.dailySales">Daily Sales</p>
                         <div class="mt-2 text-sm text-purple-600">
                             <i class="fas fa-arrow-up"></i> +5.2% from avg
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Recent Activities -->
-                <div class="modern-card p-6 mb-6">
+                <div class="employee-card p-6 mb-6">
                     <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
                         <i class="fas fa-clock mr-2 text-indigo-600"></i>
-                        Recent Activities
-                        <span class="ml-2 text-sm font-normal text-gray-500">(Last 24 hours)</span>
+                        <span data-translate="recentActivities">Recent Activities</span>
+                        <span class="ml-2 text-sm font-normal text-gray-500" data-translate="last24Hours">(Last 24 hours)</span>
                     </h3>
                     <div class="space-y-3 max-h-[300px] overflow-y-auto pr-2">
                         <div class="activity-item flex items-center p-3 bg-gray-50 rounded-lg hover:bg-white hover:shadow-md">
@@ -812,13 +1034,13 @@
                         </div>
                         <div class="flex justify-center mt-4">
                             <button class="text-sm text-indigo-600 hover:text-indigo-800 flex items-center">
-                                <span>View All Activities</span>
+                                <span data-translate="viewAllActivities">View All Activities</span>
                                 <i class="fas fa-arrow-right ml-1"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Sync Status -->
                 <div class="sync-status-container">
                     <div class="sync-card backdrop-blur-sm bg-white/90">
@@ -829,122 +1051,46 @@
                                     <div class="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
                                 </div>
                                 <div class="ml-3">
-                                    <span class="font-medium text-blue-900 block">3 Items Pending Sync</span>
-                                    <span class="text-sm text-gray-500">Last synced: 5 mins ago</span>
+                                    <span class="font-medium text-blue-900 block" data-translate="itemsPendingSync">Items Pending Sync</span>
+                                    <span class="text-sm text-gray-500" data-translate="lastSynced">Last synced:</span> 5 mins ago
                                 </div>
                             </div>
                             <button class="btn-primary whitespace-nowrap">
                                 <i class="fas fa-cloud-upload-alt mr-2"></i>
-                                Sync Now
+                                <span data-translate="syncNow">Sync Now</span>
                             </button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Footer -->
-        <div class="text-center py-4 text-gray-600 bg-white border-t">
-            ERP App v1.0 | Contact Support: <a href="mailto:support@erp.com" class="text-indigo-600">support@erp.com</a>
-        </div>
-    </div>
-
-    <!-- 3. STOCK MANAGEMENT PAGE -->
-    <div id="stock" class="page">
-        <div class="page-title">
-            <i class="fas fa-boxes"></i>
-            3. STOCK MANAGEMENT - Inventory Control
-        </div>
-        
-        <!-- Header -->
-        <div class="header-modern">
-            <div class="flex items-center">
-                <div class="hamburger mr-4">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <div class="logo-modern">
-                    <i class="fas fa-cube"></i>
-                    <span>ERP Pro</span>
-                </div>
-            </div>
-            <div class="flex items-center space-x-4">
-                <select class="form-input w-24">
-                    <option>EN</option>
-                    <option>ES</option>
-                </select>
-                <button class="btn-secondary">
-                    <i class="fas fa-sign-out-alt mr-2"></i>
-                    Logout
-                </button>
-            </div>
-        </div>
-        
-        <div class="main-layout">
-            <!-- Sidebar -->
-            <div class="sidebar-modern">
-                <div class="nav-item">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </div>
-                <div class="nav-item active">
-                    <i class="fas fa-boxes"></i>
-                    <span>Stock Management</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-file-invoice"></i>
-                    <span>Invoices</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-quote-right"></i>
-                    <span>Quotations</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Business Insights</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-users"></i>
-                    <span>User Management</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-cog"></i>
-                    <span>System Config</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-database"></i>
-                    <span>Backup/Restore</span>
-                </div>
-            </div>
-            
-            <!-- Main Content -->
-            <div class="content-modern">
+            `,
+            stock: `
                 <!-- Page Header -->
                 <div class="flex justify-between items-center mb-8">
-                    <h2 class="text-3xl font-bold text-gray-900">Stock Management</h2>
+                    <h2 class="text-3xl font-bold text-gray-900" data-translate="stockManagementTitle">Stock Management</h2>
                     <div class="flex space-x-4">
                         <select class="form-input w-40">
-                            <option>All Items</option>
-                            <option>Low Stock</option>
-                            <option>Ordered</option>
+                            <option data-translate="allPages">All Items</option>
+                            <option data-translate="lowStock">Low Stock</option>
+                            <option data-translate="ordered">Ordered</option>
                         </select>
                         <button class="btn-primary" id="add-stock-btn">
                             <i class="fas fa-plus mr-2"></i>
-                            Add New Stock
+                            <span data-translate="addNewStock">Add New Stock</span>
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- Stock Table -->
-                <div class="modern-card p-0 overflow-hidden">
+                <div class="employee-card p-0 overflow-hidden">
                     <table class="modern-table">
                         <thead>
                             <tr>
-                                <th>Item Name</th>
-                                <th>Current Qty</th>
-                                <th>Min Threshold</th>
-                                <th>Status</th>
-                                <th>Last Updated</th>
-                                <th>Actions</th>
+                                <th data-translate="itemName">Item Name</th>
+                                <th data-translate="currentQty">Current Qty</th>
+                                <th data-translate="minThreshold">Min Threshold</th>
+                                <th data-translate="status">Status</th>
+                                <th data-translate="lastUpdated">Last Updated</th>
+                                <th data-translate="actions">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -959,7 +1105,7 @@
                                 </td>
                                 <td><span class="font-bold text-gray-900">150</span></td>
                                 <td>20</td>
-                                <td><span class="status-badge status-available">Available</span></td>
+                                <td><span class="status-badge status-available" data-translate="available">Available</span></td>
                                 <td>2025-05-23</td>
                                 <td>
                                     <button class="btn-secondary mr-2 edit-stock-btn">
@@ -981,7 +1127,7 @@
                                 </td>
                                 <td><span class="font-bold text-gray-900">5</span></td>
                                 <td>25</td>
-                                <td><span class="status-badge status-low">Low Stock</span></td>
+                                <td><span class="status-badge status-low" data-translate="lowStockStatus">Low Stock</span></td>
                                 <td>2025-05-22</td>
                                 <td>
                                     <button class="btn-secondary mr-2 edit-stock-btn">
@@ -1003,7 +1149,7 @@
                                 </td>
                                 <td><span class="font-bold text-gray-900">0</span></td>
                                 <td>10</td>
-                                <td><span class="status-badge status-ordered">Ordered</span></td>
+                                <td><span class="status-badge status-ordered" data-translate="orderedStatus">Ordered</span></td>
                                 <td>2025-05-21</td>
                                 <td>
                                     <button class="btn-secondary mr-2 edit-stock-btn">
@@ -1017,118 +1163,42 @@
                         </tbody>
                     </table>
                 </div>
-                
+
                 <!-- Sync Status -->
                 <div class="sync-card mt-6">
                     <div class="flex justify-between items-center w-full">
                         <div class="flex items-center">
                             <i class="fas fa-sync-alt text-blue-600 mr-3"></i>
-                            <span class="font-medium text-blue-900">Offline changes: 2 items pending sync</span>
+                            <span class="font-medium text-blue-900" data-translate="offlineChanges">Offline changes:</span> 2 items pending sync
                         </div>
                         <button class="btn-primary">
                             <i class="fas fa-cloud-upload-alt mr-2"></i>
-                            Sync Changes
+                            <span data-translate="syncChanges">Sync Changes</span>
                         </button>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Footer -->
-        <div class="text-center py-4 text-gray-600 bg-white border-t">
-            ERP App v1.0 | Contact Support: <a href="mailto:support@erp.com" class="text-indigo-600">support@erp.com</a>
-        </div>
-    </div>
-
-    <!-- 4. INVOICES MANAGEMENT PAGE -->
-    <div id="invoices" class="page">
-        <div class="page-title">
-            <i class="fas fa-file-invoice"></i>
-            4. INVOICES MANAGEMENT - Billing Control
-        </div>
-        
-        <!-- Header -->
-        <div class="header-modern">
-            <div class="flex items-center">
-                <div class="hamburger mr-4">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <div class="logo-modern">
-                    <i class="fas fa-cube"></i>
-                    <span>ERP Pro</span>
-                </div>
-            </div>
-            <div class="flex items-center space-x-4">
-                <select class="form-input w-24">
-                    <option>EN</option>
-                    <option>ES</option>
-                </select>
-                <button class="btn-secondary">
-                    <i class="fas fa-sign-out-alt mr-2"></i>
-                    Logout
-                </button>
-            </div>
-        </div>
-        
-        <div class="main-layout">
-            <!-- Sidebar -->
-            <div class="sidebar-modern">
-                <div class="nav-item">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-boxes"></i>
-                    <span>Stock Management</span>
-                </div>
-                <div class="nav-item active">
-                    <i class="fas fa-file-invoice"></i>
-                    <span>Invoices</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-quote-right"></i>
-                    <span>Quotations</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Business Insights</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-users"></i>
-                    <span>User Management</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-cog"></i>
-                    <span>System Config</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-database"></i>
-                    <span>Backup/Restore</span>
-                </div>
-            </div>
-            
-            <!-- Main Content -->
-            <div class="content-modern">
+            `,
+            invoices: `
                 <!-- Page Header -->
                 <div class="flex justify-between items-center mb-8">
-                    <h2 class="text-3xl font-bold text-gray-900">Invoice Management</h2>
+                    <h2 class="text-3xl font-bold text-gray-900" data-translate="invoiceManagement">Invoice Management</h2>
                     <button class="btn-primary" id="create-invoice-btn">
                         <i class="fas fa-plus mr-2"></i>
-                        Create Invoice
+                        <span data-translate="createInvoice">Create Invoice</span>
                     </button>
                 </div>
-                
+
                 <!-- Invoices Table -->
-                <div class="modern-card p-0 overflow-hidden">
+                <div class="employee-card p-0 overflow-hidden">
                     <table class="modern-table">
                         <thead>
                             <tr>
-                                <th>Invoice ID</th>
-                                <th>Customer Name</th>
-                                <th>Total Amount</th>
-                                <th>Created Date</th>
-                                <th>Status</th>
-                                <th>Actions</th>
+                                <th data-translate="invoiceId">Invoice ID</th>
+                                <th data-translate="customerName">Customer Name</th>
+                                <th data-translate="totalAmount">Total Amount</th>
+                                <th data-translate="createdDate">Created Date</th>
+                                <th data-translate="status">Status</th>
+                                <th data-translate="actions">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1137,7 +1207,7 @@
                                 <td>ABC Company</td>
                                 <td><span class="font-bold text-gray-900">$450.00</span></td>
                                 <td>2025-05-23</td>
-                                <td><span class="status-badge status-available">Synced</span></td>
+                                <td><span class="status-badge status-available" data-translate="synced">Synced</span></td>
                                 <td>
                                     <button class="btn-secondary mr-2">
                                         <i class="fas fa-eye"></i>
@@ -1152,7 +1222,7 @@
                                 <td>XYZ Corp</td>
                                 <td><span class="font-bold text-gray-900">$1,200.00</span></td>
                                 <td>2025-05-22</td>
-                                <td><span class="status-badge status-draft">Draft</span></td>
+                                <td><span class="status-badge status-draft" data-translate="draft">Draft</span></td>
                                 <td>
                                     <button class="btn-secondary mr-2">
                                         <i class="fas fa-eye"></i>
@@ -1165,118 +1235,42 @@
                         </tbody>
                     </table>
                 </div>
-                
+
                 <!-- Sync Status -->
                 <div class="sync-card mt-6">
                     <div class="flex justify-between items-center w-full">
                         <div class="flex items-center">
                             <i class="fas fa-sync-alt text-blue-600 mr-3"></i>
-                            <span class="font-medium text-blue-900">1 draft invoice created offline</span>
+                            <span class="font-medium text-blue-900">1 <span data-translate="draftInvoiceCreatedOffline">draft invoice created offline</span></span>
                         </div>
                         <button class="btn-primary">
                             <i class="fas fa-cloud-upload-alt mr-2"></i>
-                            Sync All
+                            <span data-translate="syncChanges">Sync Changes</span>
                         </button>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Footer -->
-        <div class="text-center py-4 text-gray-600 bg-white border-t">
-            ERP App v1.0 | Contact Support: <a href="mailto:support@erp.com" class="text-indigo-600">support@erp.com</a>
-        </div>
-    </div>
-
-    <!-- 5. QUOTATIONS MANAGEMENT PAGE -->
-    <div id="quotations" class="page">
-        <div class="page-title">
-            <i class="fas fa-quote-right"></i>
-            5. QUOTATIONS MANAGEMENT - Proposal Tracking
-        </div>
-        
-        <!-- Header -->
-        <div class="header-modern">
-            <div class="flex items-center">
-                <div class="hamburger mr-4">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <div class="logo-modern">
-                    <i class="fas fa-cube"></i>
-                    <span>ERP Pro</span>
-                </div>
-            </div>
-            <div class="flex items-center space-x-4">
-                <select class="form-input w-24">
-                    <option>EN</option>
-                    <option>ES</option>
-                </select>
-                <button class="btn-secondary">
-                    <i class="fas fa-sign-out-alt mr-2"></i>
-                    Logout
-                </button>
-            </div>
-        </div>
-        
-        <div class="main-layout">
-            <!-- Sidebar -->
-            <div class="sidebar-modern">
-                <div class="nav-item">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-boxes"></i>
-                    <span>Stock Management</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-file-invoice"></i>
-                    <span>Invoices</span>
-                </div>
-                <div class="nav-item active">
-                    <i class="fas fa-quote-right"></i>
-                    <span>Quotations</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Business Insights</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-users"></i>
-                    <span>User Management</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-cog"></i>
-                    <span>System Config</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-database"></i>
-                    <span>Backup/Restore</span>
-                </div>
-            </div>
-            
-            <!-- Main Content -->
-            <div class="content-modern">
+            `,
+            quotations: `
                 <!-- Page Header -->
                 <div class="flex justify-between items-center mb-8">
-                    <h2 class="text-3xl font-bold text-gray-900">Quotation Management</h2>
+                    <h2 class="text-3xl font-bold text-gray-900" data-translate="quotationManagement">Quotation Management</h2>
                     <button class="btn-primary" id="create-quotation-btn">
                         <i class="fas fa-plus mr-2"></i>
-                        Create Quotation
+                        <span data-translate="createQuotation">Create Quotation</span>
                     </button>
                 </div>
-                
+
                 <!-- Quotations Table -->
-                <div class="modern-card p-0 overflow-hidden">
+                <div class="employee-card p-0 overflow-hidden">
                     <table class="modern-table">
                         <thead>
                             <tr>
-                                <th>Quote ID</th>
-                                <th>Customer Name</th>
-                                <th>Total Amount</th>
-                                <th>Valid Until</th>
-                                <th>Status</th>
-                                <th>Actions</th>
+                                <th data-translate="quoteId">Quote ID</th>
+                                <th data-translate="customerName">Customer Name</th>
+                                <th data-translate="totalAmount">Total Amount</th>
+                                <th data-translate="validUntil">Valid Until</th>
+                                <th data-translate="status">Status</th>
+                                <th data-translate="actions">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1285,7 +1279,7 @@
                                 <td>ABC Company</td>
                                 <td><span class="font-bold text-gray-900">$850.00</span></td>
                                 <td>2025-06-15</td>
-                                <td><span class="status-badge status-sent">Sent</span></td>
+                                <td><span class="status-badge status-sent" data-translate="sent">Sent</span></td>
                                 <td>
                                     <button class="btn-secondary mr-2">
                                         <i class="fas fa-eye"></i>
@@ -1303,7 +1297,7 @@
                                 <td>XYZ Corp</td>
                                 <td><span class="font-bold text-gray-900">$1,450.00</span></td>
                                 <td>2025-06-10</td>
-                                <td><span class="status-badge status-accepted">Accepted</span></td>
+                                <td><span class="status-badge status-accepted" data-translate="accepted">Accepted</span></td>
                                 <td>
                                     <button class="btn-secondary mr-2">
                                         <i class="fas fa-eye"></i>
@@ -1316,128 +1310,52 @@
                         </tbody>
                     </table>
                 </div>
-                
+
                 <!-- Sync Status -->
                 <div class="sync-card mt-6">
                     <div class="flex justify-between items-center w-full">
                         <div class="flex items-center">
                             <i class="fas fa-sync-alt text-blue-600 mr-3"></i>
-                            <span class="font-medium text-blue-900">1 draft quotation created offline</span>
+                            <span class="font-medium text-blue-900">1 <span data-translate="draftQuotationCreatedOffline">draft quotation created offline</span></span>
                         </div>
                         <button class="btn-primary">
                             <i class="fas fa-cloud-upload-alt mr-2"></i>
-                            Sync All
+                            <span data-translate="syncChanges">Sync Changes</span>
                         </button>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Footer -->
-        <div class="text-center py-4 text-gray-600 bg-white border-t">
-            ERP App v1.0 | Contact Support: <a href="mailto:support@erp.com" class="text-indigo-600">support@erp.com</a>
-        </div>
-    </div>
-
-    <!-- 6. BUSINESS INSIGHTS PAGE -->
-    <div id="insights" class="page">
-        <div class="page-title">
-            <i class="fas fa-chart-line"></i>
-            6. BUSINESS INSIGHTS - Performance Analytics
-        </div>
-        
-        <!-- Header -->
-        <div class="header-modern">
-            <div class="flex items-center">
-                <div class="hamburger mr-4">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <div class="logo-modern">
-                    <i class="fas fa-cube"></i>
-                    <span>ERP Pro</span>
-                </div>
-            </div>
-            <div class="flex items-center space-x-4">
-                <select class="form-input w-24">
-                    <option>EN</option>
-                    <option>ES</option>
-                </select>
-                <button class="btn-secondary">
-                    <i class="fas fa-sign-out-alt mr-2"></i>
-                    Logout
-                </button>
-            </div>
-        </div>
-        
-        <div class="main-layout">
-            <!-- Sidebar -->
-            <div class="sidebar-modern">
-                <div class="nav-item">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-boxes"></i>
-                    <span>Stock Management</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-file-invoice"></i>
-                    <span>Invoices</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-quote-right"></i>
-                    <span>Quotations</span>
-                </div>
-                <div class="nav-item active">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Business Insights</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-users"></i>
-                    <span>User Management</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-cog"></i>
-                    <span>System Config</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-database"></i>
-                    <span>Backup/Restore</span>
-                </div>
-            </div>
-            
-            <!-- Main Content -->
-            <div class="content-modern">
+            `,
+            insights: `
                 <!-- Page Header -->
                 <div class="flex justify-between items-center mb-8">
-                    <h2 class="text-3xl font-bold text-gray-900">Business Insights</h2>
+                    <h2 class="text-3xl font-bold text-gray-900" data-translate="businessInsightsTitle">Business Insights</h2>
                     <div class="flex space-x-4">
                         <select class="form-input w-40">
-                            <option>Last 7 days</option>
-                            <option>Last 30 days</option>
-                            <option>Last 3 months</option>
+                            <option data-translate="last7Days">Last 7 days</option>
+                            <option data-translate="last30Days">Last 30 days</option>
+                            <option data-translate="last3Months">Last 3 months</option>
                         </select>
                     </div>
                 </div>
-                
+
                 <!-- Charts -->
                 <div class="grid-modern grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8">
-                    <div class="chart-modern">
-                        <span>Daily Sales (Last 7 Days) - Bar Chart (Chart.js)</span>
+                    <div class="chart-modern card-hover">
+                        <span data-translate="dailySalesChart">Daily Sales (Last 7 Days) - Bar Chart (Chart.js)</span>
                     </div>
-                    <div class="chart-modern">
-                        <span>Stock Distribution - Pie Chart (Chart.js)</span>
+                    <div class="chart-modern card-hover">
+                        <span data-translate="stockDistributionChart">Stock Distribution - Pie Chart (Chart.js)</span>
                     </div>
-                    <div class="chart-modern">
-                        <span>Revenue Trend - Line Chart (Chart.js)</span>
+                    <div class="chart-modern card-hover">
+                        <span data-translate="revenueTrendChart">Revenue Trend - Line Chart (Chart.js)</span>
                     </div>
                 </div>
-                
+
                 <!-- Top Selling Products -->
-                <div class="modern-card p-6 mb-6">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">
+                <div class="employee-card p-6 mb-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
                         <i class="fas fa-star mr-2 text-indigo-600"></i>
-                        Top Selling Products
+                        <span data-translate="topSellingProducts">Top Selling Products</span>
                     </h3>
                     <div class="space-y-3">
                         <div class="flex items-center p-3 bg-gray-50 rounded-lg">
@@ -1469,140 +1387,64 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Metrics -->
                 <div class="grid-modern grid-cols-1 md:grid-cols-3">
-                    <div class="metric-card">
+                    <div class="metric-card card-hover">
                         <div class="metric-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #6b21a8 100%);">
                             <i class="fas fa-dollar-sign"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-900">$15,750</h3>
-                        <p class="text-gray-600 font-medium">Total Revenue</p>
-                        <div class="mt-2 text-sm text-purple-600">This month</div>
+                        <p class="text-gray-600 font-medium" data-translate="totalRevenue">Total Revenue</p>
+                        <div class="mt-2 text-sm text-purple-600" data-translate="thisMonth">This month</div>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-card card-hover">
                         <div class="metric-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);">
                             <i class="fas fa-shopping-cart"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-900">127</h3>
-                        <p class="text-gray-600 font-medium">Orders Processed</p>
-                        <div class="mt-2 text-sm text-blue-600">This month</div>
+                        <p class="text-gray-600 font-medium" data-translate="ordersProcessed">Orders Processed</p>
+                        <div class="mt-2 text-sm text-blue-600" data-translate="thisMonth">This month</div>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-card card-hover">
                         <div class="metric-icon" style="background: linear-gradient(135deg, #10b981 0%, #065f46 100%);">
                             <i class="fas fa-calculator"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-900">$124</h3>
-                        <p class="text-gray-600 font-medium">Average Order</p>
-                        <div class="mt-2 text-sm text-green-600">This month</div>
+                        <p class="text-gray-600 font-medium" data-translate="averageOrder">Average Order</p>
+                        <div class="mt-2 text-sm text-green-600" data-translate="thisMonth">This month</div>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Footer -->
-        <div class="text-center py-4 text-gray-600 bg-white border-t">
-            ERP App v1.0 | Contact Support: <a href="mailto:support@erp.com" class="text-indigo-600">support@erp.com</a>
-        </div>
-    </div>
-
-    <!-- 7. USER MANAGEMENT PAGE -->
-    <div id="users" class="page">
-        <div class="page-title">
-            <i class="fas fa-users"></i>
-            7. USER MANAGEMENT - Admin Control
-        </div>
-        
-        <!-- Header -->
-        <div class="header-modern">
-            <div class="flex items-center">
-                <div class="hamburger mr-4">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <div class="logo-modern">
-                    <i class="fas fa-cube"></i>
-                    <span>ERP Pro</span>
-                </div>
-            </div>
-            <div class="flex items-center space-x-4">
-                <select class="form-input w-24">
-                    <option>EN</option>
-                    <option>ES</option>
-                </select>
-                <button class="btn-secondary">
-                    <i class="fas fa-sign-out-alt mr-2"></i>
-                    Logout
-                </button>
-            </div>
-        </div>
-        
-        <div class="main-layout">
-            <!-- Sidebar -->
-            <div class="sidebar-modern">
-                <div class="nav-item">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-boxes"></i>
-                    <span>Stock Management</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-file-invoice"></i>
-                    <span>Invoices</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-quote-right"></i>
-                    <span>Quotations</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Business Insights</span>
-                </div>
-                <div class="nav-item active">
-                    <i class="fas fa-users"></i>
-                    <span>User Management</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-cog"></i>
-                    <span>System Config</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-database"></i>
-                    <span>Backup/Restore</span>
-                </div>
-            </div>
-            
-            <!-- Main Content -->
-            <div class="content-modern">
+            `,
+            users: `
                 <!-- Page Header -->
                 <div class="flex justify-between items-center mb-8">
-                    <h2 class="text-3xl font-bold text-gray-900">User Management</h2>
+                    <h2 class="text-3xl font-bold text-gray-900" data-translate="userManagementTitle">User Management</h2>
                     <button class="btn-primary" id="add-user-btn">
                         <i class="fas fa-plus mr-2"></i>
-                        Add User
+                        <span data-translate="addUser">Add User</span>
                     </button>
                 </div>
-                
+
                 <!-- Users Table -->
-                <div class="modern-card p-0 overflow-hidden">
+                <div class="employee-card p-0 overflow-hidden">
                     <table class="modern-table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>Status</th>
-                                <th>Last Login</th>
-                                <th>Actions</th>
+                                <th data-translate="name">Name</th>
+                                <th data-translate="email">Email</th>
+                                <th data-translate="role">Role</th>
+                                <th data-translate="status">Status</th>
+                                <th data-translate="lastLogin">Last Login</th>
+                                <th data-translate="actions">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>John Admin</td>
                                 <td>john@erp.com</td>
-                                <td>Super Admin</td>
-                                <td><span class="status-badge status-available">Active</span></td>
+                                <td data-translate="superAdmin">Super Admin</td>
+                                <td><span class="status-badge status-available" data-translate="active">Active</span></td>
                                 <td>2025-05-23 09:15</td>
                                 <td>
                                     <button class="btn-secondary mr-2 edit-user-btn">
@@ -1616,8 +1458,8 @@
                             <tr>
                                 <td>Sarah Manager</td>
                                 <td>sarah@erp.com</td>
-                                <td>Admin</td>
-                                <td><span class="status-badge status-available">Active</span></td>
+                                <td data-translate="admin">Admin</td>
+                                <td><span class="status-badge status-available" data-translate="active">Active</span></td>
                                 <td>2025-05-22 16:30</td>
                                 <td>
                                     <button class="btn-secondary mr-2 edit-user-btn">
@@ -1631,8 +1473,8 @@
                             <tr>
                                 <td>Mike Employee</td>
                                 <td>mike@erp.com</td>
-                                <td>User</td>
-                                <td><span class="status-badge status-available">Active</span></td>
+                                <td data-translate="user">User</td>
+                                <td><span class="status-badge status-available" data-translate="active">Active</span></td>
                                 <td>2025-05-23 08:45</td>
                                 <td>
                                     <button class="btn-secondary mr-2 edit-user-btn">
@@ -1646,127 +1488,51 @@
                         </tbody>
                     </table>
                 </div>
-                
+
                 <!-- Role Permissions -->
                 <div class="grid-modern grid-cols-1 md:grid-cols-3 mt-6">
-                    <div class="modern-card p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">Super Admin</h3>
+                    <div class="employee-card p-6 card-hover">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4" data-translate="superAdmin">Super Admin</h3>
                         <ul class="list-disc pl-5 text-gray-600">
-                            <li>Full system access</li>
-                            <li>User management</li>
-                            <li>System configuration</li>
-                            <li>Backup/Restore</li>
+                            <li data-translate="fullSystemAccess">Full system access</li>
+                            <li data-translate="userManagementPermission">User management</li>
+                            <li data-translate="systemConfigurationPermission">System configuration</li>
+                            <li data-translate="backupRestorePermission">Backup/Restore</li>
                         </ul>
                     </div>
-                    <div class="modern-card p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">Admin</h3>
+                    <div class="employee-card p-6 card-hover">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4" data-translate="admin">Admin</h3>
                         <ul class="list-disc pl-5 text-gray-600">
-                            <li>User management</li>
-                            <li>View all data</li>
-                            <li>Create/Edit records</li>
-                            <li>Generate reports</li>
+                            <li data-translate="userManagementPermission">User management</li>
+                            <li data-translate="viewAllData">View all data</li>
+                            <li data-translate="createEditRecords">Create/Edit records</li>
+                            <li data-translate="generateReports">Generate reports</li>
                         </ul>
                     </div>
-                    <div class="modern-card p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">User</h3>
+                    <div class="employee-card p-6 card-hover">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4" data-translate="user">User</h3>
                         <ul class="list-disc pl-5 text-gray-600">
-                            <li>Data entry only</li>
-                            <li>View own records</li>
-                            <li>Create invoices/quotes</li>
-                            <li>Basic reporting</li>
+                            <li data-translate="dataEntryOnly">Data entry only</li>
+                            <li data-translate="viewOwnRecords">View own records</li>
+                            <li data-translate="createInvoicesQuotes">Create invoices/quotes</li>
+                            <li data-translate="basicReporting">Basic reporting</li>
                         </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Footer -->
-        <div class="text-center py-4 text-gray-600 bg-white border-t">
-            ERP App v1.0 | Contact Support: <a href="mailto:support@erp.com" class="text-indigo-600">support@erp.com</a>
-        </div>
-    </div>
+            `,
+            config: `
+                <h2 class="text-3xl font-bold text-gray-900 mb-8" data-translate="systemConfigurationTitle">System Configuration</h2>
 
-    <!-- 8. SYSTEM CONFIGURATION PAGE -->
-    <div id="config" class="page">
-        <div class="page-title">
-            <i class="fas fa-cog"></i>
-            8. SYSTEM CONFIGURATION - Admin Settings
-        </div>
-        
-        <!-- Header -->
-        <div class="header-modern">
-            <div class="flex items-center">
-                <div class="hamburger mr-4">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <div class="logo-modern">
-                    <i class="fas fa-cube"></i>
-                    <span>ERP Pro</span>
-                </div>
-            </div>
-            <div class="flex items-center space-x-4">
-                <select class="form-input w-24">
-                    <option>EN</option>
-                    <option>ES</option>
-                </select>
-                <button class="btn-secondary">
-                    <i class="fas fa-sign-out-alt mr-2"></i>
-                    Logout
-                </button>
-            </div>
-        </div>
-        
-        <div class="main-layout">
-            <!-- Sidebar -->
-            <div class="sidebar-modern">
-                <div class="nav-item">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-boxes"></i>
-                    <span>Stock Management</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-file-invoice"></i>
-                    <span>Invoices</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-quote-right"></i>
-                    <span>Quotations</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Business Insights</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-users"></i>
-                    <span>User Management</span>
-                </div>
-                <div class="nav-item active">
-                    <i class="fas fa-cog"></i>
-                    <span>System Config</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-database"></i>
-                    <span>Backup/Restore</span>
-                </div>
-            </div>
-            
-            <!-- Main Content -->
-            <div class="content-modern">
-                <h2 class="text-3xl font-bold text-gray-900 mb-8">System Configuration</h2>
-                
                 <!-- General Settings -->
-                <div class="modern-card p-6 mb-6">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">General Settings</h3>
+                <div class="employee-card p-6 mb-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4" data-translate="generalSettings">General Settings</h3>
                     <div class="space-y-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Business Name</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="businessName">Business Name</label>
                             <input type="text" placeholder="Enter business name" class="form-input">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Default Currency</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="defaultCurrency">Default Currency</label>
                             <select class="form-input">
                                 <option>USD ($)</option>
                                 <option>EUR (€)</option>
@@ -1774,180 +1540,104 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Default Language</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="defaultLanguage">Default Language</label>
                             <select class="form-input">
-                                <option>English</option>
-                                <option>Spanish</option>
+                                <option value="en">English</option>
+                                <option value="si">Sinhala</option>
                             </select>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Stock Settings -->
-                <div class="modern-card p-6 mb-6">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Stock Settings</h3>
+                <div class="employee-card p-6 mb-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4" data-translate="stockSettings">Stock Settings</h3>
                     <div class="space-y-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Global Low Stock Threshold</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="globalLowStockThreshold">Global Low Stock Threshold</label>
                             <input type="number" placeholder="Enter threshold" class="form-input">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Auto-reorder Notifications</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="autoReorderNotifications">Auto-reorder Notifications</label>
                             <select class="form-input">
                                 <option>Enabled</option>
                                 <option>Disabled</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Notifications</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="emailNotifications">Email Notifications</label>
                             <input type="email" placeholder="Enter email" class="form-input">
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Save Button -->
                 <button class="btn-primary">
                     <i class="fas fa-save mr-2"></i>
-                    Save Configuration
+                    <span data-translate="saveConfiguration">Save Configuration</span>
                 </button>
-            </div>
-        </div>
-        
-        <!-- Footer -->
-        <div class="text-center py-4 text-gray-600 bg-white border-t">
-            ERP App v1.0 | Contact Support: <a href="mailto:support@erp.com" class="text-indigo-600">support@erp.com</a>
-        </div>
-    </div>
+            `,
+            backup: `
+                <h2 class="text-3xl font-bold text-gray-900 mb-8" data-translate="backupRestorePageTitle">Backup & Restore</h2>
 
-    <!-- 9. BACKUP & RESTORE PAGE -->
-    <div id="backup" class="page">
-        <div class="page-title">
-            <i class="fas fa-database"></i>
-            9. BACKUP & RESTORE - Data Management
-        </div>
-        
-        <!-- Header -->
-        <div class="header-modern">
-            <div class="flex items-center">
-                <div class="hamburger mr-4">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <div class="logo-modern">
-                    <i class="fas fa-cube"></i>
-                    <span>ERP Pro</span>
-                </div>
-            </div>
-            <div class="flex items-center space-x-4">
-                <select class="form-input w-24">
-                    <option>EN</option>
-                    <option>ES</option>
-                </select>
-                <button class="btn-secondary">
-                    <i class="fas fa-sign-out-alt mr-2"></i>
-                    Logout
-                </button>
-            </div>
-        </div>
-        
-        <div class="main-layout">
-            <!-- Sidebar -->
-            <div class="sidebar-modern">
-                <div class="nav-item">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-boxes"></i>
-                    <span>Stock Management</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-file-invoice"></i>
-                    <span>Invoices</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-quote-right"></i>
-                    <span>Quotations</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Business Insights</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-users"></i>
-                    <span>User Management</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-cog"></i>
-                    <span>System Config</span>
-                </div>
-                <div class="nav-item active">
-                    <i class="fas fa-database"></i>
-                    <span>Backup/Restore</span>
-                </div>
-            </div>
-            
-            <!-- Main Content -->
-            <div class="content-modern">
-                <h2 class="text-3xl font-bold text-gray-900 mb-8">Backup & Restore</h2>
-                
                 <!-- Backup Section -->
-                <div class="modern-card p-6 mb-6">
+                <div class="employee-card p-6 mb-6">
                     <h3 class="text-xl font-bold text-gray-900 mb-4">
                         <i class="fas fa-download mr-2 text-indigo-600"></i>
-                        Backup Data
+                        <span data-translate="backupData">Backup Data</span>
                     </h3>
-                    <p class="text-gray-600 mb-4">Export all system data as JSON file for backup purposes.</p>
+                    <p class="text-gray-600 mb-4" data-translate="exportAllSystemData">Export all system data as JSON file for backup purposes.</p>
                     <div class="mb-4">
-                        <p class="font-medium text-gray-900">Backup Includes:</p>
+                        <p class="font-medium text-gray-900" data-translate="backupIncludes">Backup Includes:</p>
                         <ul class="list-disc pl-5 text-gray-600">
-                            <li>Stock Data</li>
-                            <li>Invoices</li>
-                            <li>Quotations</li>
-                            <li>User Data</li>
+                            <li data-translate="stockData">Stock Data</li>
+                            <li data-translate="invoicesData">Invoices</li>
+                            <li data-translate="quotationsData">Quotations</li>
+                            <li data-translate="userData">User Data</li>
                         </ul>
                     </div>
                     <button class="btn-primary">
                         <i class="fas fa-download mr-2"></i>
-                        Download Backup
+                        <span data-translate="generateBackup">Generate Backup</span>
                     </button>
                 </div>
-                
+
                 <!-- Restore Section -->
-                <div class="modern-card p-6 mb-6">
+                <div class="employee-card p-6 mb-6">
                     <h3 class="text-xl font-bold text-gray-900 mb-4">
                         <i class="fas fa-upload mr-2 text-indigo-600"></i>
-                        Restore Data
+                        <span data-translate="restoreData">Restore Data</span>
                     </h3>
-                    <p class="text-gray-600 mb-4">Upload and restore data from a backup file.</p>
-                    <div class="mb-4">
-                        <input type="file" class="form-input" accept=".json">
-                        <p class="text-red-600 mt-2"><i class="fas fa-exclamation-triangle mr-2"></i>Warning: This will overwrite all existing data!</p>
-                    </div>
+                    <p class="text-gray-600 mb-4" data-translate="uploadPreviouslyGenerated">Upload a previously generated JSON backup file to restore system data.</p>
+                    <input type="file" class="form-input mb-4">
                     <button class="btn-primary">
                         <i class="fas fa-upload mr-2"></i>
-                        Restore Data
+                        <span data-translate="restoreFromBackup">Restore from Backup</span>
                     </button>
                 </div>
-                
-                <!-- Recent Backups -->
-                <div class="modern-card p-0 overflow-hidden">
-                    <h3 class="text-xl font-bold text-gray-900 p-6">Recent Backups</h3>
+
+                <!-- Backup History -->
+                <div class="employee-card p-0 overflow-hidden">
+                    <h3 class="text-xl font-bold text-gray-900 p-6 pb-4">
+                        <i class="fas fa-history mr-2 text-indigo-600"></i>
+                        <span data-translate="backupHistory">Backup History</span>
+                    </h3>
                     <table class="modern-table">
                         <thead>
                             <tr>
-                                <th>Backup Date</th>
-                                <th>File Size</th>
-                                <th>Records Count</th>
-                                <th>Status</th>
-                                <th>Actions</th>
+                                <th data-translate="dateTime">Date & Time</th>
+                                <th data-translate="fileSize">File Size</th>
+                                <th data-translate="records">Records</th>
+                                <th data-translate="status">Status</th>
+                                <th data-translate="actions">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>2025-05-23 10:30 AM</td>
-                                <td>2.4 MB</td>
-                                <td>1,247 records</td>
-                                <td><span class="status-badge status-available">Success</span></td>
+                                <td>2025-05-23 10:00 AM</td>
+                                <td>3.5 MB</td>
+                                <td>2,500 records</td>
+                                <td><span class="status-badge status-available" data-translate="success">Success</span></td>
                                 <td>
                                     <button class="btn-secondary">
                                         <i class="fas fa-download"></i>
@@ -1958,7 +1648,7 @@
                                 <td>2025-05-20 09:15 AM</td>
                                 <td>2.1 MB</td>
                                 <td>1,198 records</td>
-                                <td><span class="status-badge status-available">Success</span></td>
+                                <td><span class="status-badge status-available" data-translate="success">Success</span></td>
                                 <td>
                                     <button class="btn-secondary">
                                         <i class="fas fa-download"></i>
@@ -1968,289 +1658,72 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Footer -->
-        <div class="text-center py-4 text-gray-600 bg-white border-t">
-            ERP App v1.0 | Contact Support: <a href="mailto:support@erp.com" class="text-indigo-600">support@erp.com</a>
-        </div>
-    </div>
+            `
+        };
 
-    <!-- Modals -->
-    <!-- Add/Edit Stock Modal -->
-    <div id="add-stock-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" id="close-stock-modal">&times;</span>
-            <h3 class="text-2xl font-bold text-gray-900 mb-6">Add/Edit Stock Item</h3>
-            
-            <form class="space-y-6">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Item Name <span class="text-red-500">*</span></label>
-                    <input type="text" class="form-input" placeholder="Enter item name">
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Current Quantity <span class="text-red-500">*</span></label>
-                        <input type="number" class="form-input" placeholder="0">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Minimum Threshold <span class="text-red-500">*</span></label>
-                        <input type="number" class="form-input" placeholder="10">
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
-                    <select class="form-input">
-                        <option>Available</option>
-                        <option>Ordered</option>
-                        <option>Out of Stock</option>
-                    </select>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Unit Price ($)</label>
-                    <input type="number" step="0.01" class="form-input" placeholder="0.00">
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
-                    <textarea class="form-input" rows="3" placeholder="Optional description..."></textarea>
-                </div>
-                
-                <div class="flex justify-end space-x-4 pt-4">
-                    <button type="button" id="cancel-stock-modal" class="btn-secondary">Cancel</button>
-                    <button type="submit" class="btn-primary">
-                        <i class="fas fa-save mr-2"></i>
-                        Save Item
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+        // Function to load page content
+        function loadPage(pageId) {
+            const contentDiv = document.getElementById('page-content');
+            const headerTitle = document.getElementById('page-header-title');
+            const sidebarItems = document.querySelectorAll('.sidebar-modern .nav-item');
+            const offlineBanner = document.getElementById('offline-banner');
 
-    <!-- Add/Edit Invoice Modal -->
-    <div id="add-invoice-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" id="close-invoice-modal">&times;</span>
-            <h3 class="text-2xl font-bold text-gray-900 mb-6">Create/Edit Invoice</h3>
-            
-            <form class="space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Invoice ID</label>
-                        <input type="text" class="form-input" value="INV-003" readonly>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Date</label>
-                        <input type="date" class="form-input" value="2025-05-24">
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Customer Name <span class="text-red-500">*</span></label>
-                    <input type="text" class="form-input" placeholder="Enter customer name">
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Customer Email</label>
-                    <input type="email" class="form-input" placeholder="customer@email.com">
-                </div>
-                
-                <!-- Invoice Items -->
-                <div>
-                    <div class="flex justify-between items-center mb-4">
-                        <label class="block text-sm font-medium text-gray-700">Invoice Items</label>
-                        <button type="button" class="btn-secondary" id="add-invoice-item-btn">
-                            <i class="fas fa-plus mr-2"></i>
-                            Add Item
-                        </button>
-                    </div>
-                    
-                    <div id="invoiceItems" class="space-y-4">
-                        <div class="grid grid-cols-12 gap-4 items-center">
-                            <div class="col-span-4">
-                                <select class="form-input text-sm">
-                                    <option>Select Item</option>
-                                    <option>Widget A ($15.00)</option>
-                                    <option>Product B ($25.50)</option>
-                                    <option>Item C ($8.75)</option>
-                                </select>
-                            </div>
-                            <div class="col-span-2">
-                                <input type="number" class="form-input text-sm" placeholder="Qty" value="1">
-                            </div>
-                            <div class="col-span-2">
-                                <input type="number" class="form-input text-sm" placeholder="Price" value="15.00">
-                            </div>
-                            <div class="col-span-2">
-                                <input type="text" class="form-input text-sm" placeholder="Total" value="$15.00" readonly>
-                            </div>
-                            <div class="col-span-2">
-                                <button type="button" class="btn-secondary text-sm remove-invoice-item-btn">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Invoice Totals -->
-                <div class="border-t border-gray-200 pt-6 mt-6">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div></div>
-                        <div class="space-y-3">
-                            <div class="flex justify-between text-gray-700">
-                                <span>Subtotal:</span>
-                                <span class="font-medium">$15.00</span>
-                            </div>
-                            <div class="flex justify-between text-gray-700">
-                                <span>Tax (10%):</span>
-                                <span class="font-medium">$1.50</span>
-                            </div>
-                            <div class="flex justify-between font-bold text-xl text-gray-900">
-                                <span>Total:</span>
-                                <span>$16.50</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Notes</label>
-                    <textarea class="form-input" rows="2" placeholder="Additional notes..."></textarea>
-                </div>
-                
-                <div class="flex justify-end space-x-4 pt-4">
-                    <button type="button" id="cancel-invoice-modal" class="btn-secondary">Cancel</button>
-                    <button type="submit" class="btn-secondary">
-                        <i class="fas fa-save mr-2"></i>
-                        Save as Draft
-                    </button>
-                    <button type="submit" class="btn-primary">
-                        <i class="fas fa-file-invoice-dollar mr-2"></i>
-                        Create Invoice
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+            // Hide offline banner for now (can be toggled later)
+            offlineBanner.classList.add('hidden');
 
-    <!-- Add/Edit User Modal -->
-    <div id="add-user-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" id="close-user-modal">&times;</span>
-            <h3 class="text-2xl font-bold text-gray-900 mb-6">Add/Edit User</h3>
-            
-            <form class="space-y-6">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Full Name <span class="text-red-500">*</span></label>
-                    <input type="text" class="form-input" placeholder="Enter full name">
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address <span class="text-red-500">*</span></label>
-                    <input type="email" class="form-input" placeholder="user@business.com">
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Password <span class="text-red-500">*</span></label>
-                    <input type="password" class="form-input" placeholder="Enter password">
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">User Role <span class="text-red-500">*</span></label>
-                    <select class="form-input">
-                        <option>User</option>
-                        <option>Admin</option>
-                        <option>Super Admin</option>
-                    </select>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
-                    <select class="form-input">
-                        <option>Active</option>
-                        <option>Inactive</option>
-                    </select>
-                </div>
-                
-                <div class="flex justify-end space-x-4 pt-4">
-                    <button type="button" id="cancel-user-modal" class="btn-secondary">Cancel</button>
-                    <button type="submit" class="btn-primary">
-                        <i class="fas fa-save mr-2"></i>
-                        Save User
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+            // Update header title
+            headerTitle.textContent = i18next.t(pageId + 'Menu') || pageId.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()); // Fallback to capitalized pageId
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Helper function to map icon classes to page IDs
-            function getPageIdFromIcon(iconClass) {
-                if (iconClass.includes('sign-in')) return 'login';
-                if (iconClass.includes('tachometer')) return 'dashboard';
-                if (iconClass.includes('boxes')) return 'stock';
-                if (iconClass.includes('file-invoice')) return 'invoices';
-                if (iconClass.includes('quote-right')) return 'quotations';
-                if (iconClass.includes('chart-line')) return 'insights';
-                if (iconClass.includes('users')) return 'users';
-                if (iconClass.includes('cog')) return 'config';
-                if (iconClass.includes('database')) return 'backup';
-                return '';
-            }
-
-            // Function to show a page and update navigation state
-            function showPage(pageId) {
-                const pages = document.querySelectorAll('.page');
-                pages.forEach(page => page.classList.remove('active'));
-                
-                const targetPage = document.getElementById(pageId);
-                if (targetPage) {
-                    targetPage.classList.add('active');
-                    
-                    // Update sidebar active state
-                    const sidebarItems = document.querySelectorAll('.sidebar-modern .nav-item');
-                    sidebarItems.forEach(item => {
-                        item.classList.remove('active');
-                        if (item.textContent.toLowerCase().includes(pageId)) {
-                            item.classList.add('active');
-                        }
-                    });
+            // Update sidebar active state
+            sidebarItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.page === pageId) {
+                    item.classList.add('active');
                 }
+            });
+
+            // Load content
+            if (pageContent[pageId]) {
+                // Create a temporary element to parse the HTML string
+                const tempElement = document.createElement('div');
+                tempElement.innerHTML = pageContent[pageId];
+
+                // Clear current content and append new content
+                contentDiv.innerHTML = '';
+                while (tempElement.firstChild) {
+                    contentDiv.appendChild(tempElement.firstChild);
+                }
+
+                // Apply translations after loading content
+                updateContentLanguage();
+                attachModalListeners(); // Re-attach modal listeners after loading content
+            } else {
+                contentDiv.innerHTML = `<div class="text-center text-gray-600 italic" data-translate="pageNotFound">Page not found for ${pageId}</div>`;
+                updateContentLanguage(); // Apply translations to the "Page not found" message
             }
 
-            // Handle navigation buttons click events
-            const navigationButtons = document.querySelectorAll('.nav-buttons i[class*="fa-"]');
-            navigationButtons.forEach(icon => {
-                icon.parentElement.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const pageId = getPageIdFromIcon(icon.className);
-                    if (pageId) {
-                        showPage(pageId);
-                    }
-                });
-            });
+            // Close mobile sidebar if open
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            if (sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                overlay.classList.add('hidden');
+            }
+        }
 
-            // Handle sidebar navigation click events
-            document.querySelectorAll('.sidebar-modern .nav-item').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const icon = this.querySelector('i');
-                    if (!icon) return;
-                    
-                    const pageId = getPageIdFromIcon(icon.className);
-                    if (pageId) {
-                        showPage(pageId);
-                    }
-                });
+        // Attach event listeners for sidebar navigation
+        document.querySelectorAll('.sidebar-modern .nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const pageId = this.dataset.page;
+                if (pageId) {
+                    loadPage(pageId);
+                }
             });
+        });
 
-            // Modal functions
+        // Function to attach modal listeners (needs to be called after content load)
+        function attachModalListeners() {
+             // Modal functions
             const modalTriggers = [
                 { id: 'add-stock-btn', modal: 'add-stock-modal' },
                 { id: 'create-invoice-btn', modal: 'add-invoice-modal' },
@@ -2285,63 +1758,10 @@
                 button.addEventListener('click', () => showModal('add-user-modal'));
             });
 
-            function showModal(modalId) {
-                const modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.classList.add('active');
-                }
-            }
-
-            // Close modal buttons
-            const closeModalButtons = [
-                { id: 'close-stock-modal', modal: 'add-stock-modal' },
-                { id: 'cancel-stock-modal', modal: 'add-stock-modal' },
-                { id: 'close-invoice-modal', modal: 'add-invoice-modal' },
-                { id: 'cancel-invoice-modal', modal: 'add-invoice-modal' },
-                { id: 'close-user-modal', modal: 'add-user-modal' },
-                { id: 'cancel-user-modal', modal: 'add-user-modal' }
-            ];
-
-            closeModalButtons.forEach(btn => {
-                const buttonElement = document.getElementById(btn.id);
-                if (buttonElement) {
-                    buttonElement.addEventListener('click', () => closeModal(btn.modal));
-                }
-            });
-
-            function closeModal(modalId) {
-                const modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.classList.remove('active');
-                }
-            }
-
             // Dynamic invoice item addition
             const addInvoiceItemBtn = document.getElementById('add-invoice-item-btn');
             if (addInvoiceItemBtn) {
                 addInvoiceItemBtn.addEventListener('click', addInvoiceItem);
-            }
-
-            function addInvoiceItem() {
-                const container = document.getElementById('invoiceItems');
-                if (container.children.length > 0) {
-                    const newItem = container.children[0].cloneNode(true);
-                    // Reset values in cloned item
-                    const inputs = newItem.querySelectorAll('input, select');
-                    inputs.forEach(input => {
-                        if (input.type !== 'text' || !input.readOnly) {
-                            input.value = input.type === 'number' ? '0' : '';
-                        }
-                    });
-                    // Add event listener for remove button on new item
-                    const removeBtn = newItem.querySelector('.remove-invoice-item-btn');
-                    if (removeBtn) {
-                        removeBtn.addEventListener('click', function() {
-                            newItem.remove();
-                        });
-                    }
-                    container.appendChild(newItem);
-                }
             }
 
             // Add event listeners for existing remove buttons (if any)
@@ -2350,36 +1770,123 @@
                     this.closest('.grid.grid-cols-12').remove();
                 });
             });
+        }
 
-            // Close modals when clicking outside
-            document.addEventListener('click', function(e) {
-                if (e.target.classList.contains('modal')) {
-                    const activeModal = document.querySelector('.modal.active');
-                    if (activeModal) {
-                        closeModal(activeModal.id);
-                    }
-                }
+
+        // Modal functions
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // Close modal buttons
+        const closeModalButtons = document.querySelectorAll('.modal-close, .btn-secondary[id^="cancel-"]');
+        closeModalButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const modalId = this.closest('.modal').id;
+                closeModal(modalId);
             });
+        });
 
-            // Keyboard navigation
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    const activeModal = document.querySelector('.modal.active');
-                    if (activeModal) {
-                        closeModal(activeModal.id);
-                    }
+        // Close modals when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                const activeModal = document.querySelector('.modal.active');
+                if (activeModal) {
+                    closeModal(activeModal.id);
                 }
-            });
-
-            // Hamburger menu for mobile
-            const hamburger = document.querySelector('.hamburger');
-            if (hamburger) {
-                hamburger.addEventListener('click', function() {
-                    const sidebar = document.querySelector('.sidebar-modern');
-                    sidebar.classList.toggle('active');
-                });
             }
         });
-</script>
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const activeModal = document.querySelector('.modal.active');
+                if (activeModal) {
+                    closeModal(activeModal.id);
+                }
+            }
+        });
+
+        // Dynamic invoice item addition logic
+        function addInvoiceItem() {
+            const container = document.getElementById('invoiceItems');
+            if (container) {
+                const newItemHtml = `
+                    <div class="grid grid-cols-12 gap-4 items-center">
+                        <div class="col-span-4">
+                            <select class="form-input text-sm">
+                                <option>${i18next.t('selectItem')}</option>
+                                <option>Widget A ($15.00)</option>
+                                <option>Product B ($25.50)</option>
+                                <option>Item C ($8.75)</option>
+                            </select>
+                        </div>
+                        <div class="col-span-2">
+                            <input type="number" class="form-input text-sm" placeholder="${i18next.t('qty')}" value="1">
+                        </div>
+                        <div class="col-span-2">
+                            <input type="number" class="form-input text-sm" placeholder="${i18next.t('price')}" value="0.00">
+                        </div>
+                        <div class="col-span-2">
+                            <input type="text" class="form-input text-sm" placeholder="${i18next.t('total')}" value="$0.00" readonly>
+                        </div>
+                        <div class="col-span-2">
+                            <button type="button" class="btn-secondary text-sm remove-invoice-item-btn">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', newItemHtml);
+                // Add event listener for the new remove button
+                container.lastElementChild.querySelector('.remove-invoice-item-btn').addEventListener('click', function() {
+                    this.closest('.grid.grid-cols-12').remove();
+                });
+            }
+        }
+
+
+        // Hamburger menu for mobile
+        const openSidebarBtn = document.getElementById('open-sidebar');
+        const closeSidebarBtn = document.getElementById('close-sidebar');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        if (openSidebarBtn) {
+            openSidebarBtn.addEventListener('click', function() {
+                sidebar.classList.add('active');
+                overlay.classList.remove('hidden');
+            });
+        }
+
+        if (closeSidebarBtn) {
+            closeSidebarBtn.addEventListener('click', function() {
+                sidebar.classList.remove('active');
+                overlay.classList.add('hidden');
+            });
+        }
+
+        if (overlay) {
+            overlay.addEventListener('click', function() {
+                sidebar.classList.remove('active');
+                overlay.classList.add('hidden');
+            });
+        }
+
+
+        // Initial page load (default to dashboard)
+        loadPage('dashboard');
+
+    </script>
 </body>
 </html>
