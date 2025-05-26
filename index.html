@@ -896,11 +896,7 @@
         }
             }, function(err, t) {
                 // Initialize translation on load
-                // updateContentLanguage();
-            }, function(err, t) {
-                // Initialize translation on load
-                // updateContentLanguage();
-                // Load the initial page content after translations are loaded
+                 updateContentLanguage();
                 loadPage('dashboard');
             });
         });
@@ -920,38 +916,33 @@
         }
 
         // Function to update content language
-        function updateContentLanguage() {
-            console.log("Updating content language...");
-            if (typeof i18next === 'undefined' || !i18next.isInitialized()) {
-                console.log("i18next not initialized yet, delaying translation update.");
-                setTimeout(updateContentLanguage, 100); // Retry after 100ms
-                return;
+    function updateContentLanguage() {
+    if (typeof i18next !== 'undefined' && i18next.isInitialized) {
+        console.log("Updating content language...");
+        try {
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.dataset.translate;
+                const translatedText = i18next.t(key);
+                console.log(`Translating key: ${key}, Result: ${translatedText}`);
+                element.textContent = translatedText;
+            });
+            document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
+                const key = element.dataset.translatePlaceholder;
+                const translatedText = i18next.t(key);
+                console.log(`Translating placeholder key: ${key}, Result: ${translatedText}`);
+                element.placeholder = translatedText;
+            });
+
+            document.documentElement.lang = i18next.language;
+            document.body.classList.remove('sinhala', 'english');
+            document.body.classList.add(i18next.language === 'si' ? 'sinhala' : 'english');
+        } catch (error) {
+            console.error("Translation update error:", error);
             }
-
-            try {
-                document.querySelectorAll('[data-translate]').forEach(element => {
-                    const key = element.dataset.translate;
-                    const translatedText = i18next.t(key);
-                    console.log(`Translating key: ${key}, Result: ${translatedText}`);
-                    element.textContent = translatedText;
-                });
-                document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
-                    const key = element.dataset.translatePlaceholder;
-                    const translatedText = i18next.t(key);
-                    console.log(`Translating placeholder key: ${key}, Result: ${translatedText}`);
-                    element.placeholder = translatedText;
-                });
-
-                // Update html lang attribute
-                document.documentElement.lang = i18next.language;
-
-                // Add appropriate font class
-                document.body.classList.remove('sinhala', 'english');
-                document.body.classList.add(i18next.language === 'si' ? 'sinhala' : 'english');
-            } catch (error) {
-                console.error("Translation update error:", error);
+            } else {
+            console.log("i18next not initialized yet, skipping translation update.");
             }
-        }
+    }
 
         // Page content mapping
         const pageContent = {
