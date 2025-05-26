@@ -212,6 +212,14 @@
             color: #667eea;
         }
 
+        .logo-modern .erp-logo {
+            width: 40px; /* Adjust size as needed */
+            height: 40px; /* Adjust size as needed */
+            border-radius: 50%;
+            margin-right: 10px; /* Space between logo and text */
+            object-fit: cover; /* Ensure the image covers the circular area */
+        }
+
         .offline-banner {
             background: #fef3c7;
             border: none;
@@ -558,7 +566,7 @@
         <div id="sidebar" class="sidebar-modern fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0">
             <div class="mb-8 flex items-center justify-between md:justify-start">
                 <div class="logo-modern text-white">
-                    <i class="fas fa-cube"></i>
+                    <img src="logo.jpg" alt="ERP Pro Logo" class="erp-logo">
                     <span>ERP Pro</span>
                 </div>
                 <button id="close-sidebar" class="text-white text-3xl focus:outline-none md:hidden">&times;</button>
@@ -885,21 +893,8 @@
                 fallbackLng: 'en',
                 interpolation: {
                     escapeValue: false // react already safes from xss
-                }
-            }, function(err, t) {
-                if (err) {
-                    console.error("Error initializing i18next:", err);
-                } else {
-                    console.log("i18next initialized successfully.");
-                }
-                // Set the language switcher value after i18next is initialized
-                const languageSelect = document.getElementById('language-select');
-                if (languageSelect) {
-                    console.log("Language select element found. Setting value to:", i18next.language);
-                    languageSelect.value = i18next.language;
-                } else {
-                    console.log("Language select element not found.");
-                }
+        }
+            },function(err, t) {
                 // Initialize translation on load
                 updateContentLanguage();
                 // Load the initial page content after translations are loaded
@@ -936,7 +931,7 @@
             document.body.classList.remove('sinhala', 'english');
             document.body.classList.add(i18next.language === 'si' ? 'sinhala' : 'english');
         }
-
+    
         // Language switcher event listener
         const languageSelect = document.getElementById('language-select');
         if (languageSelect) {
