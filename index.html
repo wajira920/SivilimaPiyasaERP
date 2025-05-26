@@ -1718,16 +1718,18 @@
                 }
 
                 // Apply translations after loading content
-                if (typeof i18next !== 'undefined' && i18next.isInitialized()) {
+                if (typeof i18next !== 'undefined' && i18next.isInitialized) {
                     updateContentLanguage();
                 }
+
                 attachModalListeners(); // Re-attach modal listeners after loading content
             } else {
                 contentDiv.innerHTML = `<div class="text-center text-gray-600 italic" data-translate="pageNotFound">Page not found for ${pageId}</div>`;
-                if (typeof i18next !== 'undefined' && i18next.isInitialized()) {
+                if (typeof i18next !== 'undefined' && i18next.isInitialized) {
                     updateContentLanguage(); // Apply translations to the "Page not found" message
                 }
             }
+
 
             // Close mobile sidebar if open
             const sidebar = document.getElementById('sidebar');
